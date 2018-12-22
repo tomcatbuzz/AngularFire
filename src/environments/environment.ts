@@ -1,13 +1,20 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: '',
+    apiKey: 'YOUR Key',
     authDomain: '',
     databaseURL: '',
     projectId: '',
     storageBucket: '',
     messagingSenderId: ''
+  },
+  googleMapsKey: 'YOUR key',
+
+  contentful: {
+    spaceId: 'YOUR SpaceId',
+    token: ''
   }
+
 
 };
 

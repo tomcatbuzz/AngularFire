@@ -1,0 +1,14 @@
+<mat-card *ngIf="lesson$ | async as lesson">
+  <mat-card-title>{{ lesson.title }}</mat-card-title>
+  <mat-card-subtitle>Episode {{ lesson.episode }}</mat-card-subtitle>
+  <mat-card-content>
+  <time>Published on {{ lesson.createdAt | date: 'fullDate' }}</time>
+   <h3>Tags</h3>
+   <mat-chip-list>
+     <mat-chip *ngFor="let tag of lesson.tags">{{ tag }}</mat-chip>
+   </mat-chip-list>
+
+   <mat-divider [inset]="true"></mat-divider>
+    <div [innerHTML]="lesson.body | mdToHtml"></div>
+  </mat-card-content>
+</mat-card>

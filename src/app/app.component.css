@@ -1,0 +1,8 @@
+main {
+  padding: 0;
+  margin: 0;
+}
+
+progress::-webkit-progress-value {
+  transition: 0.1s all ease;
+}

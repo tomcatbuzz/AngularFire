@@ -9,8 +9,20 @@
     [opened]="!(isHandset$ | async)">
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-button routerLink="/contact" routerLinkActive="mat-accent">Contact</a>
-      <a mat-button routerLink="/dashboard" routerLinkActive="mat-accent">Dashboard</a>
+      <a mat-list-item routerLink="/contact" routerLinkActive="mat-accent" (click)="drawer.toggle()">
+        <span class="nav-caption">Contact</span></a>
+      <a mat-list-item routerLink="/dashboard" routerLinkActive="mat-accent" (click)="drawer.toggle()">
+        <span class="nav-caption">Dashboard</span></a>
+      <a mat-list-item routerLink="/sms" routerLinkActive="mat-accent" (click)="drawer.toggle()">
+        <span class="nav-caption">SMS</span></a>
+      <a mat-list-item routerLink="/google-map" routerLinkActive="mat-accent" (click)="drawer.toggle()">
+        <span class="nav-caption">Map</span></a>
+      <a mat-list-item routerLink="/holdable" routerLinkActive="mat-accent" (click)="drawer.toggle()">
+        <span class="nav-caption">Holdable</span></a>
+      <a mat-list-item routerLink="/local-forecast" routerLinkActive="mat-accent" (click)="drawer.toggle()">
+        <span class="nav-caption">Weather</span></a>
+      <a mat-list-item routerLink="/blog-post" routerLinkActive="mat-accent" (click)="drawer.toggle()">
+        <span class="nav-caption">Blog</span></a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -27,7 +39,13 @@
       <span class="spacer"></span>
       <a mat-button routerLink="/contact" routerLinkActive="mat-accent">Contact</a>
       <a mat-button routerLink="/dashboard" routerLinkActive="mat-accent">Dashboard</a>
+      <a mat-button routerLink="/sms" routerLinkActive="mat-accent">SMS</a>
+      <a mat-button routerLink="/google-map" routerLinkActive="mat-accent">Map</a>
+      <a mat-button routerLink="/local-forecast" routerLinkActive="mat-accent">Weather</a>
+      <a mat-button routerLink="/blog-post" routerLinkActive="mat-accent">Blog</a>
+      <!-- <a mat-button routerLink="/holdable" routerLinkActive="mat-accent">Holdable</a> -->
     </mat-toolbar>
+    <ng-content></ng-content>
     <!-- Add Content Here -->
   </mat-sidenav-content>
 </mat-sidenav-container>

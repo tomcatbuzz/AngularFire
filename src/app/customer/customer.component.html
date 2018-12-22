@@ -1,0 +1,4 @@
+<mat-card>
+  <mat-card-header>Hold to Delete</mat-card-header>
+  <app-holdable *ngFor="let c of customers$ | async" [customer]="c"></app-holdable>
+</mat-card>

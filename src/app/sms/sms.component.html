@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-card-title>Send SMS Messages</mat-card-title>
+  <form (submit)="onSubmit(f)" #f="ngForm">
+    <mat-form-field>
+      <input type="text" name="phoneNumber" ngModel placeholder="Phone Number" class="form-control" matInput #phoneNumberInput="ngModel" required>
+      <mat-error *ngIf="phoneNumberInput.invalid">Please enter a number ex.(15554443333).</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea type="text" name="message" ngModel placeholder="Message" class="form-control" matInput #messageInput="ngModel" required>
+      </textarea>
+      <mat-error *ngIf="messageInput.invalid">Please enter a message.</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="accent" type="submit" [disabled]="!f.valid">Send</button>
+  </form>
+</mat-card>

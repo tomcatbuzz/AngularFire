@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Component({
   selector: 'app-contact',
@@ -9,17 +9,17 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class ContactComponent {
 
-  constructor(private af: AngularFireDatabase) {}
+  constructor(private db: AngularFireDatabase) {}
 
     onSubmit(form: NgForm) {
     const value = form.value;
     const name = value.name;
     const email = value.email;
-    const message = value.content;
     const subject = value.subject;
+    const message = value.message;
 
     const formRequest = { name, email, subject, message};
-    this.af.list('/messages').push(formRequest);
-    form.reset();
+    this.db.list('/messages').push(formRequest);
+    form.resetForm();
   }
 }

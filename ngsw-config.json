@@ -2,7 +2,7 @@
   "index": "/index.html",
   "assetGroups": [
     {
-      "name": "app",
+      "name": "app-v1",
       "installMode": "prefetch",
       "resources": {
         "files": [
@@ -31,7 +31,7 @@
     {
       "name": "",
       "urls": [
-        "BACKEND API"
+        "https://us-central1-angularfire-b748a.cloudfunctions.net/darkSkyProxy"
       ],
       "cacheConfig": {
         "maxSize": 5,

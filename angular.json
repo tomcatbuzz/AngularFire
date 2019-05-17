@@ -24,10 +24,14 @@
               "src/manifest.json",
               "src/combined-sw.js",
               "src/firebase-messaging-sw.js"
+              
             ],
             "styles": [
               {
                 "input": "src/my-theme.scss"
+              },
+              {
+                "input": "src/variables.scss"
               },
               "src/styles.css"
             ],

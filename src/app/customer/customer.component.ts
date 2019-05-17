@@ -1,7 +1,5 @@
-import { Component } from '@angular/core';
-import { HoldableDirective } from '../holdable.directive';
+import { Component, OnInit, Input } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-customer',
@@ -9,29 +7,17 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent {
-  customers$;
-  constructor(private afs: AngularFirestore) {
-    this.customers$ =  this.collection$('customers');
+
+  @Input() customer;
+  progress = 0;
+
+  constructor(private afs: AngularFirestore) { }
+
+  deleteCustomer(e, cust) {
+    this.progress = e / 10;
+    if (this.progress > 100) {
+      this.afs.doc(`customers/${this.customer.id}`).delete();
+    }
   }
 
-  holdHandler(e) {
-    console.log(e);
-  }
-
-
- // Helper to map collection doc IDs to Observable
-  collection$(path, query?) {
-    return this.afs
-      .collection(path, query)
-      .snapshotChanges()
-      .pipe(
-        map(actions => {
-          return actions.map(a => {
-            const data: any = a.payload.doc.data();
-            const id = a.payload.doc.id;
-            return { id, ...data };
-          });
-        })
-      );
-  }
 }

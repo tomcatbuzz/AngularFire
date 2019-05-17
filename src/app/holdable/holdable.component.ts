@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { CustomerComponent } from '../customer/customer.component';
 import { map } from 'rxjs/operators';
+import { CustomerComponent } from '../customer/customer.component';
 
 @Component({
   selector: 'app-holdable',
@@ -10,8 +10,6 @@ import { map } from 'rxjs/operators';
 })
 export class HoldableComponent {
   customers$;
-  @Input() customer;
-  progress = 0;
   docData;
 
   constructor(private afs: AngularFirestore) {
@@ -23,12 +21,9 @@ export class HoldableComponent {
     };
    }
 
-  deleteCustomer(e, cust) {
-    this.progress = e / 10;
-    if (this.progress > 100) {
-      this.afs.doc(`customers/${this.customer.id}`).delete();
-    }
-  }
+   holdHandler(e) {
+     console.log(e);
+   }
 
   seedData() {
     this.afs.collection('customers').add(this.docData)

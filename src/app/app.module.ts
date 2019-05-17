@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule,
@@ -18,7 +18,8 @@ import { MatToolbarModule,
    MatMenuModule,
    MatProgressSpinnerModule,
    MatInputModule,
-   MatChipsModule} from '@angular/material';
+   MatChipsModule,
+   MatProgressBarModule} from '@angular/material';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ContactComponent } from './contact/contact.component';
@@ -71,6 +72,7 @@ import { MdToHtmlPipe } from './md-to-html.pipe';
     MatFormFieldModule,
     MatMenuModule,
     MatProgressSpinnerModule,
+    MatProgressBarModule,
     MatInputModule,
     MatChipsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -79,9 +81,10 @@ import { MdToHtmlPipe } from './md-to-html.pipe';
     AppRoutingModule,
     HttpClientModule,
     AgmCoreModule.forRoot({apiKey: environment.googleMapsKey}),
-    ServiceWorkerModule.register('combined-sw.js', { enabled: environment.production })
+    ServiceWorkerModule.register('/combined-sw.js', { enabled: environment.production })
   ],
-  providers: [WeatherService, ContentfulService],
+  providers: [WeatherService, ContentfulService,
+    { provide: FirestoreSettingsToken, useValue: {} }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,9 @@
 <mat-card>
-  <mat-card-header>Hold to Delete</mat-card-header>
-  <app-holdable *ngFor="let c of customers$ | async" [customer]="c"></app-holdable>
+  <hr>
+  <em>DocID: {{ customer.id }}</em>
+  <h3>{{ customer.name }}</h3>
+  <p>Email: {{ customer.email }}</p>
+  <p>Order Total: {{ customer.orderTotal | currency }}</p>
+  <button mat-button color="primary" holdable (holdTime)="deleteCustomer($event, customer)">Delete {{ customer.name }}</button>
+  <mat-progress-bar [value]="progress" max="100" color="red"></mat-progress-bar>
 </mat-card>

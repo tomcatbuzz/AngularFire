@@ -30,7 +30,7 @@
     "@types/marked": "^0.6.5",
     "contentful": "^7.6.0",
     "core-js": "^3.1.3",
-    "firebase": "^6.1.0",
+    "firebase": "^6.3.0",
     "geofire": "^5.0.1",
     "hammerjs": "^2.0.8",
     "marked": "^0.6.2",
